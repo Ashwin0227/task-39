@@ -1,4 +1,4 @@
-const { mySqlOperation } = require('./db');
+// const { mySqlOperation } = require('./db');
 var bcrypt = require('bcrypt');
 
 
@@ -16,7 +16,7 @@ const getSignupData = async (req,res) =>{
         }
         var sql = "INSERT INTO userinfo (firstname,lastname,username,password) VALUES (?)";
         var values = [[firstname,lastname,username,hash]];
-        let result = await mySqlOperation(sql,values)
+        // let result = await mySqlOperation(sql,values)
         res.status(202).send(
             {
             message:"successfully signed up!",
@@ -35,7 +35,7 @@ const display = (req, res)=> {
 
 const usecaseForCompression = async(req,res) =>{
     try{
-        let result = await mySqlOperation("select * from devices;")
+        // let result = await mySqlOperation("select * from devices;")
         res.status(202).send({
             message:"operation result",
             data:result
@@ -50,7 +50,7 @@ const usecaseForCompression = async(req,res) =>{
 }
 const getStudentData = async(req,res)=>{
     try{
-        let result = await mySqlOperation("select * from student where name = ?;",(req.params.name));
+        // let result = await mySqlOperation("select * from student where name = ?;",(req.params.name));
         res.status(202).send({
             message:"operation result",
             data: result 
@@ -66,7 +66,7 @@ const getStudentData = async(req,res)=>{
 
 const delStudentData=async(req,res)=>{
     try{
-        let result = await mySqlOperation("delete from student where id = ?;",(req.params.id))
+        // let result = await mySqlOperation("delete from student where id = ?;",(req.params.id))
         res.status(202).send({
             message:"operation result",
             data: result 
@@ -80,7 +80,7 @@ const delStudentData=async(req,res)=>{
 
 const insertStudentData=async(req,res)=>{
     try{
-        let result = await mySqlOperation("insert into student values(?);",[Object.values(req.body)]);
+        // let result = await mySqlOperation("insert into student values(?);",[Object.values(req.body)]);
         res.status(202).send({
             message:"operation result",
             data: result 
@@ -96,7 +96,7 @@ const insertStudentData=async(req,res)=>{
 
 const updateStudentData=async(req,res)=>{
     try{
-        let result = await mySqlOperation("update student set name = ? where id=?;",[req.body.name,req.params.id]);
+        // let result = await mySqlOperation("update student set name = ? where id=?;",[req.body.name,req.params.id]);
         res.status(202).send({
             message:"operation result",
             data: result 

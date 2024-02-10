@@ -1,6 +1,6 @@
 var bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { mySqlOperation } = require('./db');
+// const { mySqlOperation } = require('./db');
 
 
 const authorizationOfUser = (req,res,next) => {
@@ -37,7 +37,7 @@ const authorizationOfUser = (req,res,next) => {
 }
 
 const authenticationOfUser = async (req,res) => {
-    let temp =  await mySqlOperation("select username,password from userinfo where username = ?;",req.body.username);
+    // let temp =  await mySqlOperation("select username,password from userinfo where username = ?;",req.body.username);
     try {
     const hash = temp[0].password;
     const validPassword = await bcrypt.compare(req.body.password,hash);
